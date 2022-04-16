@@ -49,7 +49,7 @@ class Site:
         content = self.session.get('https://decor-magic.ru/catalog/pokryvala_odnospalnye/', headers=headers,
                                    params=params, cookies=cookies).content
 
-        soup = BeautifulSoup(content)
+        soup = BeautifulSoup(content, features="lxml")
         products: typing.List[Product] = []
         for i in soup.find_all(class_='products-flex-item'):
             prod = Product(i.find('a').attrs['href'])
@@ -101,7 +101,7 @@ class Product:
 
         response = requests.get(self.url, headers=headers, cookies=cookies)
 
-        soup = BeautifulSoup(response.content)
+        soup = BeautifulSoup(response.content, features="lxml")
         atr = soup.find('table').find_all('tr')
         self.design = atr[0].contents[1].contents
         self.compound = atr[1].contents[1].contents
