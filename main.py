@@ -106,8 +106,9 @@ class Product:
         self.design = atr[0].contents[1].contents
         self.compound = atr[1].contents[1].contents
         self.size = atr[2].contents[1].contents
-        self.pack_size = atr[3].contents[1].contents
-        self.contry = atr[4].contents[1].contents
+        self.mass_brutto = atr[3].contents[1].contents
+        self.pack_size = atr[4].contents[1].contents
+        self.contry = atr[5].contents[1].contents
 
 
 Site()
